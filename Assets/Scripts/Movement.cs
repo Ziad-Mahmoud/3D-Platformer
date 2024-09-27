@@ -9,6 +9,9 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
-        animator.SetBool("walk", Input.GetAxis("Vertical") != 0);
+        var input = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.forward * input * Time.deltaTime);
+        animator.SetBool("walk", input != 0);
+        animator.SetFloat("walkSpeed", input);
     }
 }
